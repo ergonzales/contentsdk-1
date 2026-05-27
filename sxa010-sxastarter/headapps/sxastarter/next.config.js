@@ -47,17 +47,9 @@ const nextConfig = {
     silenceDeprecations: ["import", "legacy-js-api"],
   },
 
-  // Enable Turbopack file system caching for faster dev startup (beta)
-  // See: https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack
-  experimental: {
-    turbopackFileSystemCacheForDev: true,
-  },
-
-  turbopack: {
-    resolveAlias: {
-      "next/image": "./src/lib/next-image-shim.tsx",
-    },
-  },
+    // Enable Turbopack only for local/dev runs. Disable in CI/production by
+    // default so builds use the stable webpack/production pipeline.
+    // Toggle with `ENABLE_TURBOPACK=true` when needed.
 
   i18n: {
     // These are all the locales you want to support in your application.
@@ -157,5 +149,21 @@ const nextConfig = {
     return config;
   },
 };
+
+const isProdOrCI = process.env.NODE_ENV === "production" || !!process.env.CI;
+const enableTurbopack = !isProdOrCI && process.env.ENABLE_TURBOPACK !== "false";
+
+// Rebuild the config object with turbopack gated behind the flag.
+if (enableTurbopack) {
+  nextConfig.experimental = { turbopackFileSystemCacheForDev: true };
+  nextConfig.turbopack = {
+    resolveAlias: {
+      "next/image": "./src/lib/next-image-shim.tsx",
+    },
+  };
+} else {
+  // Ensure keys exist but do not enable turbopack behavior in prod/CI.
+  nextConfig.experimental = nextConfig.experimental || {};
+}
 
 module.exports = nextConfig;
