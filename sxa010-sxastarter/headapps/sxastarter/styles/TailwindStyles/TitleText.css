@@ -4,23 +4,38 @@
   /* TITLE STYLES */
 
   .ChartwellTitleH1Option1 {
-    @apply text-ChartwellPlum font-light leading-[1.5] text-[3.125rem];
+    color: var(--cw-heading-color-plum);
+    line-height: var(--cw-heading-line-height);
+    font-size: var(--cw-h1-size);
+    font-weight: var(--cw-h1-weight);
   }
 
   .ChartwellTitleH1Option2 {
-    @apply text-white font-light leading-[1.5] text-[3.125rem];
+    color: rgb(255, 255, 255);
+    line-height: var(--cw-heading-line-height);
+    font-size: var(--cw-h1-size);
+    font-weight: var(--cw-h1-weight);
   }
 
   .ChartwellTitleH2 {
-    @apply text-ChartwellPlum font-normal leading-[1.5] text-[2.5rem];
+    color: var(--cw-heading-color-plum);
+    line-height: var(--cw-heading-line-height);
+    font-size: var(--cw-h2-size);
+    font-weight: var(--cw-h2-weight);
   }
 
   .ChartwellTitleH3 {
-    @apply text-ChartwellPlum font-semibold leading-[1.5]  text-[1.875rem];
+    color: var(--cw-heading-color-plum);
+    line-height: var(--cw-heading-line-height);
+    font-size: var(--cw-h3-size);
+    font-weight: var(--cw-h3-weight);
   }
 
   .ChartwellTitleCardH3 {
-    @apply text-ChartwellPlum font-semibold leading-[1.5] text-[1.5rem];
+    color: var(--cw-heading-color-plum);
+    line-height: var(--cw-heading-line-height);
+    font-size: var(--cw-h4-size);
+    font-weight: var(--cw-h4-weight);
   }
 
   /* TEXT STYLES */
