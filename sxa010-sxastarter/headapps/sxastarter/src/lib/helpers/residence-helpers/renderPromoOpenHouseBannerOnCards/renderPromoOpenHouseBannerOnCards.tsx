@@ -23,7 +23,7 @@ export function renderPromoOpenHouseBannerOnCards(sitecoreContext: any, residenc
   if (residenceName) {
     return IsItValidDate && !excludedItems.find((item: any) => item.name.toUpperCase().replace(/-/g, "") === residenceName.replace(/\s/g, "").toUpperCase()) ? stickyPromoBlockText : undefined;
   }
-  return !videoId.length && IsItValidDate && !excludedItems.find((item: any) => item.excludePageId.toUpperCase().replace(/-/g, "") === residenceID.toUpperCase().replace(/-/g, ""))
+  return !videoId?.length && IsItValidDate && !excludedItems.find((item: any) => item.excludePageId.toUpperCase().replace(/-/g, "") === residenceID.toUpperCase().replace(/-/g, ""))
     ? stickyPromoBlockText
     : undefined;
 }

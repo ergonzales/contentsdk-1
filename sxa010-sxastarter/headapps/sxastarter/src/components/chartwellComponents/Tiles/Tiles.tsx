@@ -1,28 +1,44 @@
-import { Field, withDatasourceCheck, RichText as JssRichText } from "@sitecore-content-sdk/nextjs";
+import { Field, ImageField, LinkField, withDatasourceCheck, RichText as JssRichText } from "@sitecore-content-sdk/nextjs";
 import { ComponentProps } from "lib/component-props";
 import { TileCard } from "./TileCard";
 import { useState, JSX } from "react";
 import { getGridCols } from "lib/helpers/layoutOption";
 import { HeadingLevel } from "../ui/HeadingLevel/HeadingLevel";
 
+type TileCardFields = {
+  "Heading Level": Field<string>;
+  Heading: Field<string>;
+  Image: ImageField;
+  Description?: Field<string>;
+  "CTA Text"?: Field<string>;
+  "CTA Link"?: LinkField;
+};
+
+type TileCardItem = {
+  id?: string;
+  name?: string;
+  fields?: TileCardFields;
+};
+
 type TilesProps = ComponentProps & {
   fields: {
     Heading: Field<string>;
     "Heading Level": Field<string>;
     Description: Field<string>;
-    Cards: Array<any>;
+    Cards: TileCardItem[];
     ContainerNumberOfColoumns: Field<string>;
   };
 };
 
 const Tiles = (props: TilesProps): JSX.Element => {
-  const [isOpenArray, setIsOpenArray] = useState(props?.fields?.Cards?.map(() => false));
+  const [isOpenArray, setIsOpenArray] = useState(() => props?.fields?.Cards?.map(() => false) || []);
 
-  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>, index: number, isOpen: boolean) => {
-    e.stopPropagation();
-    const newIsOpenArray = [...isOpenArray];
-    newIsOpenArray[index] = isOpen;
-    setIsOpenArray(newIsOpenArray);
+  const handleCardClick = (index: number, isOpen: boolean) => {
+    setIsOpenArray((currentIsOpenArray) => {
+      const newIsOpenArray = [...currentIsOpenArray];
+      newIsOpenArray[index] = isOpen;
+      return newIsOpenArray;
+    });
   };
   const headingLevel = props?.fields && props?.fields["Heading Level"];
   const titleText = props?.fields?.Heading;
@@ -38,12 +54,17 @@ const Tiles = (props: TilesProps): JSX.Element => {
       <div className="flex items-center justify-center">
         <ul className={`sm:grid gap-4 sm:grid-cols-2 ${gridCols} p-4 bg-ChartwellGrey-10 mt-4  `}>
           {Cards &&
-            Cards.map(({ fields: card }, index) => {
+            Cards.map((cardItem, index) => {
+              const card = cardItem?.fields;
+              if (!card?.Heading || !card?.Image || !card["Heading Level"]) {
+                return null;
+              }
+
               const isOpen = isOpenArray[index];
-              const headingLevel = card && card["Heading Level"];
-              const titleText = card?.Heading;
-              const Image = card?.Image;
-              const desc = card?.Description?.value;
+              const headingLevel = card["Heading Level"];
+              const titleText = card.Heading;
+              const Image = card.Image;
+              const desc = card?.Description;
               const CTAText = card && card["CTA Text"]?.value;
               const CTALink = card && card["CTA Link"]?.value?.href;
               return (
@@ -51,7 +72,7 @@ const Tiles = (props: TilesProps): JSX.Element => {
                   CTALink={CTALink}
                   CTAText={CTAText}
                   handleCardClick={handleCardClick}
-                  key={card.id}
+                  key={cardItem?.id || cardItem?.name || titleText?.value || index}
                   desc={desc}
                   index={index}
                   Image={Image}

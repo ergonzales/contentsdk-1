@@ -10,6 +10,12 @@
     transform: rotate(90deg);
 }
 
+.CardRotate-y-180,
+.CardRotate-y-0 {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
 .CardRotate-y-180 {
     transform: rotateY(180deg);
 }
