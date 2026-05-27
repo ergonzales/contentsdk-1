@@ -24,17 +24,13 @@ import { useMediaQuery } from "react-responsive";
 import { MobileFilterOptionButton } from "components/chartwellComponents/ui/FilterOptions/MobileFilterOptionButton";
 import { MobileModalFilterOptions } from "components/chartwellComponents/ui/FilterOptions/MobileModalFilterOptions";
 import { useSitecoreContext } from "lib/sitecore/useSitecoreContext";
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 
 const areFilterOptionsEqual = (a: CareServices[], b: CareServices[]) => {
   if (a.length !== b.length) return false;
   return a.every((option, index) => {
     const next = b[index];
-    return (
-      option.id === next.id &&
-      option.disabled === next.disabled &&
-      option.selected === next.selected
-    );
+    return option.id === next.id && option.disabled === next.disabled && option.selected === next.selected;
   });
 };
 
@@ -110,9 +106,7 @@ const FindAResidence = (props: any): JSX.Element => {
       disabled: !uniqueFilterOption.some((uniqueOption) => uniqueOption.id === option.id),
       selected: false,
     }));
-    setSelectedFilterOptions((prev) =>
-      areFilterOptionsEqual(prev, disabledFilterOption) ? prev : disabledFilterOption
-    );
+    setSelectedFilterOptions((prev) => (areFilterOptionsEqual(prev, disabledFilterOption) ? prev : disabledFilterOption));
   }, [ResidencesList, routerLocale, routerAsPath, sitecoreContext.route?.name]);
 
   useEffect(() => {
@@ -262,7 +256,7 @@ const FindAResidence = (props: any): JSX.Element => {
                     {provinceList &&
                       provinceList.map((province: any, index: any) => (
                         <li key={index} className=" ">
-                          <ChartwellLink href={resolveHref(province?.searchLink?.url || province?.searchLink)} label={province?.field?.value} />
+                          <ChartwellLink href={province?.searchLink?.url} label={province?.field?.value} />
                         </li>
                       ))}
                   </ul>

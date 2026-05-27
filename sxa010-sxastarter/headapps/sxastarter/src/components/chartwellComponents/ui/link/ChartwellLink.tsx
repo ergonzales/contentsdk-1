@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { getLinkTarget } from "lib/helpers/utils/targetLink";
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 import Link from "next/link";
 interface LinkProps {
   href: any;
@@ -16,9 +16,9 @@ interface LinkProps {
 export const ChartwellLink = ({ label = "Link to ....", href = "#", tailwindStyles, textStyles = "", target, locale, ariaLabel, linkId }: LinkProps): any => {
   const router = useRouter();
   const linkTarget = getLinkTarget(target);
-  const normalizedHref = resolveHref(href);
+  // const normalizedHref = resolveHref(href);
 
-  if (!normalizedHref || normalizedHref === "[object Object]" || !label) {
+  if (!href || !label) {
     return <></>;
   }
 
@@ -26,7 +26,7 @@ export const ChartwellLink = ({ label = "Link to ....", href = "#", tailwindStyl
 
   return (
     <Link
-      href={normalizedHref}
+      href={href}
       locale={locale || router.locale}
       rel="noreferrer"
       target={linkTarget}

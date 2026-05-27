@@ -8,7 +8,7 @@ import { ChartwellLink } from "components/chartwellComponents/ui/link/ChartwellL
 import Link from "next/link";
 import { getDelay, getTextPosition, getTopPaddingSize, getBottomPaddingSize, getHeadingColor, getGridCols, getColSpan, getPosition } from "lib/helpers/layoutOption/index";
 import { deStructureProps, getUniqueCities, populateModelData } from "lib/helpers/residence-helpers/index";
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 
 /**
  *
@@ -43,7 +43,7 @@ const CardsHandlerBlock = (props: any): JSX.Element => {
         return {
           cityId: item.cityId,
           cityName: item.cityDisplayName,
-          cityLink: resolveHref(item.cityLandingPagePath || item.CityLandingPage),
+          cityLink: item.cityLandingPagePath?.url?.path || item.CityLandingPage,
           routerLanguage: item.cityLandingPageLanguage,
         };
       })) ||

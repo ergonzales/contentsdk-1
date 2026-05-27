@@ -1,5 +1,5 @@
 import { ResidenceListModel } from "src/models/Residence";
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 
 export function getUniqueCities(ResidencesList: ResidenceListModel[], router: any) {
   const uniqCity = [...new Set(ResidencesList.flatMap((residence) => [residence.cityId, residence?.subCityId].filter((id) => id !== undefined)))];
@@ -15,7 +15,7 @@ export function getUniqueCities(ResidencesList: ResidenceListModel[], router: an
       subCity?.subCityLandingPageHref?.find((item: any) => item.language.name === router.locale) ||
       defaultCityLandingPageLink;
 
-    const cityLandingPagePath = resolveHref(localizedCityLandingPage);
+    // const cityLandingPagePath = resolveHref(localizedCityLandingPage);
 
     return {
       cityName: city?.cityName || subCity?.subCityName || "", // Fallback empty string
@@ -23,7 +23,7 @@ export function getUniqueCities(ResidencesList: ResidenceListModel[], router: an
       cityDisplayName: city?.cityNameDisplay || subCity?.subCityNameDisplay || "", // Fallback empty string
 
       CityLandingPage: localizedCityLandingPage,
-      cityLandingPagePath,
+      defaultCityLandingPageLink,
       cityLandingPageLanguage,
       residences: ResidencesList.filter((residence) => residence.cityId === cityId || residence.subCityId === cityId),
     };

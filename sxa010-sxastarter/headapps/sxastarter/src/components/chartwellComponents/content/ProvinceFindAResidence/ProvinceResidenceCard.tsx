@@ -10,7 +10,7 @@ import { promoDataHandler } from "lib/helpers/residence-helpers";
 import PropertyAddress from "../PropertyAddress/PropertyAddress";
 import { renderPromoOpenHouseBannerOnCards } from "lib/helpers/residence-helpers";
 import { useSitecoreContext } from "lib/sitecore/useSitecoreContext";
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 
 export const ProvinceResidenceCard = ({
   // imageSrc
@@ -38,8 +38,8 @@ export const ProvinceResidenceCard = ({
   const regularPrices = promoInfo?.regularPrices ?? [];
   // const openHouseRibbonText = "";
   const openHouseRibbonText = renderPromoOpenHouseBannerOnCards(sitecoreContext, residenceId, language);
-  const residenceUrl = resolveHref(url);
-  const bookTourUrl = resolveHref(bookATourLink);
+  // const residenceUrl = resolveHref(url);
+  // const bookTourUrl = resolveHref(bookATourLink);
   // console.log(residenceId);
 
   return (
@@ -47,12 +47,12 @@ export const ProvinceResidenceCard = ({
       <li className=" group  border-[1px] border-ChartwellGrey-200 bg-white flex flex-col standardResidenceCard">
         <div>
           <div className="relative overflow-hidden">
-            {residenceUrl && (
-              <Link aria-label={residenceName} title={residenceName} href={residenceUrl} locale={language}>
+            {url && (
+              <Link aria-label={residenceName} title={residenceName} href={url} locale={language}>
                 <NextImage width={500} height={220} field={residenceImage} className="w-full h-[220px] object-cover" />
               </Link>
             )}
-            {!residenceUrl && <NextImage width={500} height={220} field={residenceImage} className="w-full h-[220px] object-cover" />}
+            {!url && <NextImage width={500} height={220} field={residenceImage} className="w-full h-[220px] object-cover" />}
           </div>
           {openHouseRibbonText && (
             <div className="w-full">
@@ -72,8 +72,8 @@ export const ProvinceResidenceCard = ({
         </div>
 
         <div className="px-3 md:px-6 py-2 flex flex-col">
-          {residenceUrl ? (
-            <Link href={residenceUrl} className="flex my-3 text-ChartwellPlum no-underline font-bold text-[1.2rem]" locale={language}>
+          {url ? (
+            <Link href={url} className="flex my-3 text-ChartwellPlum no-underline font-bold text-[1.2rem]" locale={language}>
               {residenceName}
             </Link>
           ) : (
@@ -109,7 +109,7 @@ export const ProvinceResidenceCard = ({
             <ChartwellLink
               locale={language}
               ariaLabel={`${dictionary("ResidenceCardLearnMore")} ${residenceName}`}
-              href={residenceUrl}
+              href={url}
               label={dictionary("ResidenceCardLearnMore")}
               tailwindStyles="block !py-2 !px-3 !mt-0 !mt-auto mr-6 rounded-[8px] min-h-[50px] flex items-center"
               textStyles="md:text-[1rem] sm:text-md"
@@ -122,9 +122,9 @@ export const ProvinceResidenceCard = ({
                 {contactNumber}
               </div>
             </Link> */}
-            {bookTourUrl && (
+            {bookATourLink && (
               <ChartwellLink
-                href={bookTourUrl}
+                href={bookATourLink}
                 locale={language}
                 ariaLabel={`${dictionary("bookatour")} ${residenceName}`}
                 label={dictionary("bookatour")}

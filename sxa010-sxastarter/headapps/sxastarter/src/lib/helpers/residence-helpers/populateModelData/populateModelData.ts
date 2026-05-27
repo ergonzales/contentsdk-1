@@ -1,4 +1,4 @@
-import { resolveHref } from "lib/helpers/utils/resolve-href";
+// import { resolveHref } from "lib/helpers/utils/resolve-href";
 
 export const careServiceValues = (combinedCareServices: any, language: any, careServices: any) => {
   const careServiceIds = careServices?.map((el: any) => el.id);
@@ -70,7 +70,7 @@ export function populateModelData(residenceData: any, router: any, selectedProvi
         Lng: residence?.Longitude?.value,
         cityLat: residence?.city?.targetItems?.[0]?.languages?.[0]?.lat?.value,
         cityLng: residence?.city?.targetItems?.[0]?.languages?.[0]?.lng?.value,
-        url: resolveHref(residence?.url),
+        url: residence?.url?.path,
         contactNumber: residence?.contactNumber.value,
         residenceImage: residence?.thumbNailPhoto?.jsonValue?.value,
         imageSrc: residence?.thumbNailPhoto?.jsonValue?.value?.src,
@@ -80,7 +80,7 @@ export function populateModelData(residenceData: any, router: any, selectedProvi
         // assignedPromos: localizedPromo || "",
         careServiceAvailable: residence?.careServiceAvailable?.boolValue,
         careServiceAvailableText: residence?.careServiceAvailableText?.value,
-        bookATourLink: resolveHref(residence?.bookATour?.targetItems?.[0]?.bookATourUrl || residence?.bookATour?.targetItems?.[0]?.url),
+        bookATourLink: residence?.bookATour?.targetItems?.[0]?.bookATourUrl?.path,
       };
     })
     .filter((residence: any) =>
