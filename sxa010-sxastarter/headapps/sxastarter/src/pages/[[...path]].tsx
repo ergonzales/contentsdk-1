@@ -1,18 +1,15 @@
-import { useEffect, JSX } from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import scConfig from 'sitecore.config';
-import NotFound from 'src/NotFound';
-import Layout from 'src/Layout';
-import {
-  SitecorePageProps,
-  StaticPath,
-} from '@sitecore-content-sdk/nextjs';
-import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
-import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
-import components from '.sitecore/component-map';
-import client from 'lib/sitecore-client';
-import { siteResolver } from 'lib/site-resolver';
-import Providers from 'src/Providers';
+import { useEffect, JSX } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
+import scConfig from "sitecore.config";
+import NotFound from "src/NotFound";
+import Layout from "src/Layout";
+import { SitecorePageProps, StaticPath } from "@sitecore-content-sdk/nextjs";
+import { extractPath, handleEditorFastRefresh } from "@sitecore-content-sdk/nextjs/utils";
+import { isDesignLibraryPreviewData } from "@sitecore-content-sdk/nextjs/editing";
+import components from ".sitecore/component-map";
+import client from "lib/sitecore-client";
+import { siteResolver } from "lib/site-resolver";
+import Providers from "src/Providers";
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
@@ -44,18 +41,15 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   // See https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
 
   let paths: StaticPath[] = [];
-  let fallback: boolean | 'blocking' = 'blocking';
+  let fallback: boolean | "blocking" = "blocking";
 
-  if (process.env.NODE_ENV !== 'development' && scConfig.generateStaticPaths) {
+  if (process.env.NODE_ENV !== "development" && scConfig.generateStaticPaths) {
     try {
       const siteNames = [...new Set(siteResolver.sites.map((site) => site.name))];
 
-      paths = await client.getPagePaths(
-        siteNames,
-        context?.locales || []
-      );
+      paths = await client.getPagePaths(siteNames, context?.locales || []);
     } catch (error) {
-      console.log('Error occurred while fetching static paths');
+      console.log("Error occurred while fetching static paths");
       console.log(error);
     }
 
@@ -78,29 +72,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const siteHomePath = `/${siteToken}`;
   let page;
 
-  const paramsPath = Array.isArray(context.params?.path)
-    ? `/${(context.params.path as string[]).join('/')}`
-    : '/';
+  const paramsPath = Array.isArray(context.params?.path) ? `/${(context.params.path as string[]).join("/")}` : "/";
 
   const requestedPath = (() => {
-    const candidate = (extractedPath || paramsPath || '/').trim();
-    if (!candidate) return '/';
-    return candidate.startsWith('/') ? candidate : `/${candidate}`;
+    const candidate = (extractedPath || paramsPath || "/").trim();
+    if (!candidate) return "/";
+    return candidate.startsWith("/") ? candidate : `/${candidate}`;
   })();
 
   const dedupeLeadingSiteToken = (value: string): string => {
-    const segments = value.split('/').filter(Boolean);
+    const segments = value.split("/").filter(Boolean);
 
     while (segments.length > 1 && segments[0] === siteToken && segments[1] === siteToken) {
       segments.splice(1, 1);
     }
 
-    return `/${segments.join('/')}`;
+    return `/${segments.join("/")}`;
   };
 
   const withSiteTokenPrefix = (value: string): string => {
-    const normalized = value === '/' ? '' : value;
-    if (normalized.startsWith(`/${siteToken}`)) return normalized || '/';
+    const normalized = value === "/" ? "" : value;
+    if (normalized.startsWith(`/${siteToken}`)) return normalized || "/";
     return `${siteHomePath}${normalized}`;
   };
 
@@ -115,7 +107,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     pushCandidate(dedupeLeadingSiteToken(pathValue));
     pushCandidate(withSiteTokenPrefix(pathValue));
 
-    if (pathValue === '/' || pathValue === '' || pathValue === `/${context.locale || ''}`) {
+    if (pathValue === "/" || pathValue === "" || pathValue === `/${context.locale || ""}`) {
       pushCandidate(siteHomePath);
     }
 
@@ -130,9 +122,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (context.preview && isDesignLibraryPreviewData(context.previewData)) {
     page = await client.getDesignLibraryData(context.previewData);
   } else {
-    page = context.preview
-      ? await client.getPreview(context.previewData)
-      : await getPageFromCandidates(requestedPath);
+    page = context.preview ? await client.getPreview(context.previewData) : await getPageFromCandidates(requestedPath);
   }
   if (page) {
     props = {
@@ -142,18 +132,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
         locale: page.locale,
       }),
       componentProps: await client.getComponentData(page.layout, context, components),
-    }
+    };
   }
   return {
     props,
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 5 seconds
-          // Next.js will attempt to re-generate the page:
-      // - When a request comes in
-      // - At most once every 5 seconds
-      revalidate: 5, // In seconds
-          notFound: !page,
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 5 seconds
+    revalidate: 5, // In seconds
+    notFound: !page,
   };
 };
 
