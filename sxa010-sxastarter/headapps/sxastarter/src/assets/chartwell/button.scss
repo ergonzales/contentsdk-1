@@ -1,0 +1,158 @@
+@import "./variables";
+
+.button {
+    background-color: var(--chartwell-secondary-color);
+    transition: all ease 0.35s;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: var(--chartwell-dark-gray);
+        background-color: var(--chartwell-primary-color);
+        color: white;
+    }
+}
+
+.chartwellCTAs span {
+    text-transform: uppercase;
+    margin: auto !important;
+}
+
+.plum-on-clear-background,
+.blue-on-clear-background,
+.white-on-clear-background,
+.white-on-blue-background,
+.white-on-plum-background,
+.white-on-blue-background,
+.white-on-plum-background {
+    text-transform: uppercase;
+}
+
+.plum-on-clear-background {
+    border-color: var(--chartwell-primary-color);
+    background-color: transparent;
+
+    span {
+        color: var(--chartwell-primary-color);
+        text-transform: uppercase;
+    }
+
+    &:hover {
+        background-color: var(--chartwell-primary-color);
+        border: 2px solid var(--chartwell-primary-color);
+
+        & span {
+            color: white;
+        }
+    }
+}
+
+.blue-on-clear-background {
+    border-color: var(--chartwell-secondary-color);
+    background-color: transparent;
+
+    span {
+        color: var(--chartwell-secondary-color);
+        text-transform: uppercase;
+    }
+}
+
+.white-on-clear-background,
+.white-on-blue-background,
+.white-on-plum-background {
+    border-color: white;
+    background-color: transparent;
+
+    span {
+        color: white;
+        text-transform: uppercase;
+    }
+}
+
+.white-on-blue-background {
+    background-color: var(--chartwell-secondary-color);
+    border: 2px solid var(--chartwell-secondary-color-50);
+
+    &:hover {
+        background-color: var(--chartwell-primary-color);
+        border: 2px solid transparent;
+    }
+}
+
+.white-on-plum-background {
+    background-color: var(--chartwell-primary-color);
+
+    &:hover {
+        background-color: white;
+        border: 2px solid var(--chartwell-primary-color);
+
+        span {
+            color: var(--chartwell-primary-color) !important;
+        }
+    }
+}
+
+.shareButtons {
+    button {
+        margin-right: 8px;
+        opacity: 0.8;
+
+        svg {
+            circle {
+                fill: var(--chartwell-primary-color) !important;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
+    }
+}
+
+.shareBtn {
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.chartwellFAB {
+    border-radius: 100%;
+    border: 3px solid #999;
+    z-index: 99;
+
+    &:hover {
+        border-color: white;
+    }
+}
+
+.modalClose {
+    z-index: 10;
+}
+
+/* Default (desktop) */
+
+.anchor-offset {
+    scroll-margin-top: var(--anchor-offset, 220px);
+    scroll-behavior: smooth;
+    /* typical desktop header height, fallback to 220px if variable not set */
+}
+
+/* Tablet and mobile */
+@media (max-width: 1024px) {
+    .anchor-offset {
+        scroll-margin-top: var(--anchor-offset, 80px);
+        scroll-behavior: smooth;
+        /* smaller header height, fallback to 80px if variable not set */
+    }
+}
+
+@media (max-width: 600px) {
+    .anchor-offset {
+        scroll-margin-top: var(--anchor-offset, 60px);
+        scroll-behavior: smooth;
+        /* compact mobile header, fallback to 60px if variable not set */
+    }
+}

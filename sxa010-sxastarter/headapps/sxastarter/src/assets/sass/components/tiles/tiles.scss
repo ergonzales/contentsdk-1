@@ -1,0 +1,19 @@
+.rotate-90 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.rotate-90.closed {
+    transform: rotate(0deg);
+}
+
+.rotate-90.open {
+    transform: rotate(90deg);
+}
+
+.CardRotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+.CardRotate-y-0 {
+    transform: rotateY(0deg);
+}

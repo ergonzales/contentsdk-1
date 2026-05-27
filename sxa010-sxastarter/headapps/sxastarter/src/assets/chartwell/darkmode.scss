@@ -1,0 +1,50 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    // background-color: #1e1e1e !important;
+    // color: white !important;
+
+    // main {
+    //   p, span, div, h1, h2, h3, h4, h5, h6 {
+    //     color: white !important;
+    //   }
+
+    //   .bg-white, .bg-ChartwellWhite, select, input, textarea {
+    //     background-color: #1e1e1e !important;
+    //     color: white !important;
+
+    //     &::placeholder {
+    //       color: #bbb !important;
+    //     }
+    //   }        
+    //   #ChatSuggestion, #chatBot { 
+    //     background-color: white !important; 
+    //     p, span, div, h1, h2, h3, h4, h5, h6, .assistant-message p {
+    //       color: black !important;
+    //     }        
+    //   }
+
+    // }
+
+    select, input, textarea {
+      background-color: white !important;
+      color: black !important;
+
+      &.global-input-element.form-input-element {
+        color: black !important;
+      }    
+
+      &::placeholder {
+        color: #999 !important;
+      }
+    }
+    .single-select-field {
+      .form-select-option {
+        color: black !important;
+        span {
+          color: black !important;
+        }
+      }
+    }    
+  }
+
+}

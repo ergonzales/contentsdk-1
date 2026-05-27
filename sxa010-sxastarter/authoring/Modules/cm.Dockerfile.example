@@ -1,0 +1,17 @@
+# THIS FILE ONLY APPLIES TO SITECORE XM CLOUD!
+# IF YOU RUN ON SITECORE XP/XM 9.3-10.4 THEN IGNORE OR REMOVE THIS FILE.
+
+
+# These steps are required to perform the needed web.config transformations inside your local CM docker container.
+# For more details, see: https://docs.bynder.humandigital.services/
+#
+# 1) Make sure that the {REPLACE_WITH_YOUR_BYNDER_PORTAL_URL} tokens in the 'Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt' file have been updated with your Bynder Portal URL.
+# 2) Copy that XDT file to the folder '/docker/build/cm' that is located in your solution (starterkit) root folder.
+# 3) Add the following lines at the end of the file at '/docker/build/cm/Dockerfile'.
+# 4) Rebuild your CM container.
+
+# Add these lines to your Dockerfile:
+
+# Handle web.config transformation for Bynder DAM Connector for Sitecore XP/XM
+COPY ./Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt c:\inetpub\wwwroot
+RUN . 'C:\\tools\\scripts\\Invoke-XdtTransform.ps1' -Path 'C:\\inetpub\\wwwroot\\web.config' -XdtPath 'C:\\inetpub\\wwwroot\\Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt' -XdtDllPath 'C:\\tools\\bin\\Microsoft.Web.XmlTransform.dll';

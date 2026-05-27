@@ -1,0 +1,143 @@
+#PropertyDetailsContainer.newPropPage #testimonials {
+    background-color: #666
+}
+
+#PropertyDetailsContainer.newPropPage #testimonials div[class*="StarRatingSnippet__Wrapper"] {
+    background-color: transparent;
+    border: 0;
+    color: white
+}
+
+#PropertyDetailsContainer.newPropPage #testimonials div[class*="StarRatingSnippet__Wrapper"] [class*="StarRating-sc"] {
+    font-size: 25px
+}
+
+#PropertyDetailsContainer.newPropPage #testimonials div[class*="StarRatingSnippet__Wrapper"] [class*="StarRating-sc"] [class*="StarRating__Rating-sc-"] {
+    color: white;
+}
+
+#PropertyDetailsContainer.newPropPage #testimonials div[class*="StarRatingSnippet__Wrapper"] [class*="StarRatingSnippet__ReviewCount"] {
+    color: white
+}
+
+#PropertyDetailsContainer.newPropPage #testimonials .amplify-widget[data-widget-type="star_snapshot"] {
+    display: flex;
+    justify-content: center
+}
+
+.amplify-widget[data-widget-type="teaser"] {
+    .cpEuPq {
+        position: relative;
+
+        > div {
+            &:nth-child(2) {
+                > div > div {
+                    height: 100% !important;
+                    max-height: none !important;
+                    min-height: 420px !important;
+
+                }
+            }
+        }
+    }
+}
+
+.jytpua .StarRating-sc-1ntr8zq-2 {
+    display: flex !important;
+    margin-bottom: 10px;
+}
+
+.StarRating__Wrapper-sc-1ntr8zq-1 {
+    display: flex !important;
+}
+
+.Card-sc-1qxwf3a-0.StarRatingSnippet__Wrapper-sc-gdv83-0 {
+    background-color: var(--chartwell-primary-color-50) !important;
+    border-color: var(--chartwell-primary-color-50) !important;
+    padding: 30px 46px;
+
+}
+.Card-sc-1qxwf3a-0.StarRatingSnippet__Wrapper-sc-gdv83-0 svg {
+    width: 46px;
+    height: 46px;
+}
+.cOatma{
+    color: white !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 26px !important;
+}
+.eggCVY{
+    color: white !important;
+    text-align: center !important;
+}
+.amplify-widget {
+    display: flex;
+    justify-content: center;
+    svg {
+        display: none;
+    }
+}
+.fa-chevron-right  {
+    display: block !important;
+    color: #544F54 !important;
+}
+.fa-chevron-left{
+    display: block !important;
+    color: #544F54 !important;
+}
+
+
+.fa-star {
+    display: inline !important;
+}
+
+.LZaJk {
+    align-self: auto !important;
+
+    .ReviewCarousel__Arrow-sc-rx6y2u-1 {
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+.testimonial-widget--teaser {
+    > .amplify-widget {
+        width: 100%;
+
+        > div {
+            width: 100%;
+        }
+
+        .Card-sc-1qxwf3a-0.Review__Wrapper-sc-1y3pfb2-9 {
+            min-height:  530px;
+        
+            @media screen and (min-width: 1024px) {
+                min-height:  400px;
+            }
+        
+            @media screen and (min-width: 1200px) {
+                min-height:  475px;
+            }
+        
+            @media screen and (min-width: 1260px) {
+                min-height:  440px;
+            }
+        }
+        
+    }
+}
+
+.testimonial-widget--star_snapshot {
+    > .amplify-widget {
+        .StarRating__Wrapper-sc-1ntr8zq-1 {
+            justify-content: center !important;
+        }
+    }
+}
+.StarRating__Wrapper-sc-1ntr8zq-1 svg {
+    width: 28px;
+    height: 28px;
+}
+  // FormRedirect

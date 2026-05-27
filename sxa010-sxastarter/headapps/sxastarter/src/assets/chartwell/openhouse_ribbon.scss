@@ -1,0 +1,15 @@
+.openhouse-ribbon p {
+  margin: 0;
+}
+
+.openhouse-ribbon p:first-child {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--chartwell-primary-color);
+}
+
+.openhouse-ribbon p:last-child {
+  display: none !important;
+}

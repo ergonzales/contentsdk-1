@@ -1,0 +1,13 @@
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/" xmlns:set="http://www.sitecore.net/xmlconfig/set/" xmlns:role="http://www.sitecore.net/xmlconfig/role/">
+  <sitecore>
+    <services>
+      <register serviceType="Sitecore.XA.Foundation.Mvc.Repositories.Base.IAbstractRepository`1[[Sitecore.XA.Feature.SiteMetadata.Models.OpenGraphRenderingModel, Sitecore.XA.Feature.SiteMetadata]], Sitecore.XA.Foundation.Mvc"
+                implementationType="Hdis.Connectors.Dam.Bynder.SitecoreXp.Services.SxaOpenGraphMetadataRepository, Hdis.Connectors.Dam.Bynder.SitecoreXp"
+                lifetime="Singleton"/>
+      <register serviceType="Sitecore.XA.Feature.SiteMetadata.Repositories.OpenGraphMetadata.OpenGraphMetadataRepository, Sitecore.XA.Feature.SiteMetadata"
+                implementationType="Hdis.Connectors.Dam.Bynder.SitecoreXp.Services.SxaOpenGraphMetadataRepository, Hdis.Connectors.Dam.Bynder.SitecoreXp"
+                lifetime="Transient"/>
+    </services>
+    
+  </sitecore>
+</configuration>

@@ -1,0 +1,339 @@
+@import "./variables";
+
+$smButtonRadius: 8px;
+
+// @keyframes bookATourPopOverBumpColor {
+//   0% {
+//     background-color: var(--chartwell-yellow) !important;
+//   }
+//   50% {
+//     background-color: var(--chartwell-secondary-color) !important;
+//   }
+//   100% {
+//     background-color: var(--chartwell-yellow) !important;
+//   }
+// }
+
+@keyframes bookATourPopOverBumpTextColor {
+  0% {
+    color: black !important;
+  }
+  50% {
+    color: white !important;
+  }
+  100% {
+    color: black !important;
+  }
+}
+
+@keyframes popOverTextBumpColor {
+  0% {
+    color: var(--chartwell-primary-color) !important;
+  }
+  50% {
+    color: var(--chartwell-secondary-color) !important;
+  }
+  100% {
+    color: var(--chartwell-primary-color) !important;
+  }
+}
+@keyframes popOverTextUnderline {
+  0% {
+    width: 0;
+    background: var(--chartwell-primary-color);
+    opacity: 0.25;
+  }
+  50% {
+    width: calc(100% - 1rem);
+    background: var(--chartwell-secondary-color);
+    opacity: 0.25;
+  }
+  100% {
+    width: 0;
+    background: var(--chartwell-primary-color);
+    opacity: 0;
+  }
+}
+@keyframes popOverMainLinkBorder {
+  0% {
+    border-color: var(--chartwell-primary-color-25); 
+  }
+  50% {
+    border-color: var(--chartwell-secondary-color-50);
+  }
+  100% {
+    border-color: var(--chartwell-primary-color-25);
+  }
+}
+@keyframes popOverTextBumpPosition {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-0.15rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#LogoContainer {
+  image,
+  img {
+    width: 150px;
+  }
+}
+
+main {
+  #ChartwellHeader {
+    position: sticky;
+    top: 0;
+  }
+}
+
+#ChartwellHeader {
+  font-size: var(--chartwell-nav-font-size) !important;
+  @media (max-width: 1024px) {
+    background-color: white;
+  }
+  background-color: rgba(255, 255, 255, 0.925);
+
+  .chartwellheader {
+    font-size: var(--chartwell-nav-font-size);
+  }
+
+  .chartwelllogo {
+    width: 150px;
+  }
+  #propertyCorpLogo {
+    width: 100px;
+  }
+
+  .nav-text-base {
+    font-size: (var(--chartwell-base-font-size) - 2px);
+  }
+
+  .last {
+    margin-left: auto;
+  }
+
+  .link-button {
+    background-color: var(--chartwell-secondary-color);
+    transition: all ease 0.35s;
+    text-transform: uppercase;
+    color: white;
+    padding: 3px 10px;
+    display: inline;
+    font-size: calc(var(--chartwell-nav-font-size) - 2px);
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: var(--chartwell-dark-gray);
+      background-color: var(--chartwell-primary-color);
+      color: white;
+    }
+  }
+
+  nav.Navigation {
+    .active a {
+      color: var(--chartwell-primary-color);
+      line-height: 1;
+    }
+  }
+
+  nav {
+    a {
+      color: var(--chartwell-dark-gray);
+      span {
+        color: var(--chartwell-dark-gray);
+      }
+      font-size: var(--chartwell-nav-font-size);
+      &.active {
+        color: var(--chartwell-primary-color);
+      }
+      &.last {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.editing-mode {
+  #ChartwellHeader {
+    position: relative;
+    z-index: 0;
+  }
+}
+
+.cwbreadcrumbs {
+  color: #999;
+}
+footer .ChartwellFooterText a {
+  color: white !important;
+  text-decoration: none;
+}
+
+
+#cookieConsentBanner {
+  a {
+    color: white;
+  }
+}
+
+.propTopmostNav:hover {
+  background-color: #f3f3f3;
+  // display: inline-block;
+  &:hover, &:focus {
+    transform: translateY(-0.05rem) translateX(-0.05rem);    
+    transition: all ease 0.35s;
+  }  
+
+}
+
+button.popOverButton, .propTopNavLink, .mobileNavigation, .chartwellDesktopNav {
+  transition: transform 0.2s ease;
+  &:hover, &:focus {
+    transition: all ease 0.35s;
+  }
+  &:focus, &.isActive {
+    background-color: var(--chartwell-primary-color);
+    color: white !important;    
+  }
+  &:hover {
+    transform: translateY(-0.15rem) translateX(-0.15rem);
+    background-color: rgba(141, 19, 96, 0.2);
+    color: #333 !important;
+  }
+  .popOverText {
+    display: flex;
+  }
+
+  .popOverLink {
+    display: inline-flex !important;
+  } 
+}
+
+.mobileNavigation, .chartwellDesktopNav {
+  border-radius: $smButtonRadius !important;
+  display: inline-flex !important;
+  &.isActive {
+    display: inline-flex !important;
+    width: auto !important;
+  }
+}
+
+.propTopNavLink {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContainer {
+  // a.level1.submenu:first-child .linkText {
+  //   // &::before {
+  //   //   content: "Explore ";
+  //   //   display: inline;
+  //   // }
+  //   // font-weight: bold;
+  //   // text-transform: uppercase;
+  //   // font-size: 0.8rem;
+  //   // border-bottom: 2px solid var(--chartwell-primary-color-25);
+  //   // padding-bottom: 8px;
+  //   // width: 100%;
+  //   // display: flex;
+  //   // align-items: center;
+  //   // margin-top: 1rem;
+  //   // &:after {
+  //   //   // content: "\203A";
+  //   //   // display: inline-block;
+  //   //   // width: 30px;
+  //   //   // margin-left: 8px;
+  //   //   // font-size: 24px;
+  //   //   // line-height: 0;
+  //   //   // transform: translateY(-3px);
+  //   //   // font-weight: 300;
+  //   //   // color: var(--chartwell-primary-color);
+  //   //   content: '';
+  //   //   display: inline-block;
+  //   //   width: 20px;
+  //   //   height: 20px;
+  //   //   margin-left: 8px;
+  //   //   background: no-repeat center/contain;
+  //   //   /* Inline SVG for link icon with #8d1360 color */
+  //   //   //background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%238d1360'><path d='M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z'/></svg>");
+  //   //   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%238d1360'><path d='M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z'/></svg>");
+  //   //   vertical-align: middle;   
+  //   // }
+  //   // &:hover {
+  //   //   animation: popOverMainLinkBorder 0.75s ease-in-out;
+  //   //   &:after {
+  //   //     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%238d1360'><path d='M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z'/></svg>");
+  //   //     transform: translateX(10px);
+  //   //     transition: transform 0.15s ease-in-out 0.75s;
+  //   //     animation: popOverTextBumpColor 0.75s ease-in-out;
+  //   //   }
+  //   // }
+  // }
+  a:hover {
+    animation: popOverTextBumpPosition 0.75s ease-in-out;
+    &:not(.submenu:first-child) span {
+      animation: popOverTextBumpColor 0.75s ease-in-out;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 1rem;
+        bottom: -2px;
+        height: 2px;
+        width: 0;
+        border-radius: 1px;
+        //animation: popOverTextUnderline 0.75s ease-in-out;
+        background: var(--chartwell-primary-color);
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+main, footer, #footer {
+  a, li.border {
+    border-radius: 12px !important;
+    transition: all ease 0.75s;
+    line-height: 1.2;
+  }
+}
+
+#footer {
+  a {
+    border-radius: $smButtonRadius !important;
+  }
+}
+
+header, main, footer, #footer {
+  #ChartwellNavBAT, .bookATourButton, form button.submit-button {
+    // background-color: var(--chartwell-yellow);
+    // color: black;
+    font-weight: 600;
+    border-radius: $smButtonRadius;
+    transition: all ease 0.35s; 
+    line-height: 1;
+    &:hover, &:focus {
+      //color: white;
+      transform: translateY(-0.15rem) translateX(-0.15rem);   
+      transition: all ease 0.35s; 
+      // background-color: var(--chartwell-secondary-color);
+      //animation: bookATourPopOverBumpColor 0.75s ease-in-out;
+    }
+  }  
+
+  form button.submit-button {
+    padding: 1rem 1.5rem !important;
+    //background-color: var(--chartwell-yellow) !important;
+    //color: black !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    &:hover {
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+    }
+  }
+}

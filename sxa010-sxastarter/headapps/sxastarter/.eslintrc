@@ -1,0 +1,56 @@
+{
+  "root": true,
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:yaml/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "yaml",
+    "react"
+  ],
+  "ignorePatterns": [
+    ".generated/**/*",
+    "**/*.d.ts",
+    "**/*.js"
+  ],
+  "rules": {
+    "@next/next/no-img-element": "off", // Don't force next/image
+    "jsx-a11y/alt-text": [
+      "warn",
+      {
+        "elements": [
+          "img"
+        ]
+      }
+    ], // Don't force alt for <Image/> (sourced from Sitecore media)
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "caughtErrorsIgnorePattern": "."
+      }
+    ], // Allow unused variables if they are used in a catch block (e.g. catch (error) { ... })
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx",
+          "global"
+        ]
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  }
+}

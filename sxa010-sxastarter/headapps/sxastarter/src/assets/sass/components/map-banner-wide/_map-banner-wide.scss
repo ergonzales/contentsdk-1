@@ -1,0 +1,11 @@
+.map-banner-wide {
+  svg {
+    width: 100%;
+  }
+  .find-a-residence {
+    @media screen and (min-width: 1200px) {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}

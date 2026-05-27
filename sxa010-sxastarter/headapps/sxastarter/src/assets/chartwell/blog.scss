@@ -1,0 +1,156 @@
+@import './variables';
+
+.blog {
+    .border-top {
+        border-top: 1px solid var(--chartwell-primary-color);
+    }
+    .blogResourcesSection {
+        border-top: 1px solid var(--chartwell-primary-color);
+        border-bottom: 1px solid var(--chartwell-primary-color);
+        h3 {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .blogResourceCard {
+            &.GenericCard {
+              background-image: url("https://dam.chartwell.com/m/c5ccc3022bf11e3/webimage-geometric-plum-flower-background.png");
+            }  
+            opacity: .9;
+            background-color: var(--chartwell-primary-color-85);
+
+            &:hover {opacity: 1}
+            h2, h3, h4, p { color: white; line-height: 1.25; }
+            h2 {
+                font-size: 30px;
+                font-weight: 400;
+                line-height: 1.5;                
+            }
+            .blogResourceCardImage {
+                width: 100%;
+            }
+
+            &.FormCard {
+                h2 {line-height: 1.15;}                
+                .bootlegBootstrapContainer {
+                    form {
+
+                        .field-control-wrapper {
+                            display: flex;
+                            flex-direction: column;
+
+                            &.row {
+                                flex-direction: row;
+                            }
+                    
+                            .two-column {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                margin-right: 2rem;
+                    
+                                input[type="radio"] {
+                                margin: 0 5px;
+                                }
+                    
+                                label {
+                                margin: 0;
+                                padding: 0;
+                                }
+                            }
+                        }
+                        input {
+                            background-color: white;
+                            color: var(--chartwell-dark-gray);
+                            margin-top: 5px;
+                        }
+                        .LV_invalid, label {
+                            color: white;
+                            font-size: 1rem;
+                        }
+                        .LV_invalid {
+                            margin-right: 5px;
+                        }
+                        input[type='checkbox'] {
+                            margin-top: 10px;                            
+                        }
+                        .layout.container-fluid .row .grid-layout-col .layout-col {
+                            padding: 2px 0px;
+                        }
+                        .cw-submit-button-style {
+                            background-color: var(--chartwell-primary-color-85);
+                            color: white;
+                            font-size: 1.125rem;
+                            font-weight: 600;
+                            border: 2px solid white;
+                            border-radius: 0;
+    
+                            &:hover {
+                                background-color: var(--chartwell-primary-color);
+                            }
+                        }    
+                        .errorMsg {
+                            flex-shrink: 0;
+                        }            
+                    }                
+                } 
+            }
+
+
+
+            &.ResourceDownloadCard {
+                background-color: none transparent;
+                @media screen and (max-width: 767px) {
+                    min-height: 400px;
+                }
+                .blogCardTextContent {
+                    position: absolute;
+                    bottom: 0;
+                    top: auto;
+                    padding: 2rem 3rem;
+
+                    @media screen and (max-width: 768px) {
+                        padding: 1rem 3rem;
+                    }
+                    background-color: var(--chartwell-primary-color-85);
+                    h2 { font-size: 1.5rem;}                    
+                }                
+            }
+
+        }
+        a {
+            text-decoration: none;
+        }        
+    }
+}
+
+.authorList {
+    .authorContainer {
+        &:nth-child(odd) {
+            .authorPhoto {
+                order: 1;
+            } 
+            .authorDetails {
+                order: 2;
+            }               
+        }
+        &:nth-child(even) {
+            .authorPhoto {
+                order: 2;
+            }
+            .authorDetails {
+                order: 1;
+                text-align: right;
+            }                                
+        }            
+    }    
+
+}
+
+@media print {
+    .BlogArticle {
+        .cwEloquaFormContainer, .shareButtons, .blogPostList {
+            display: none;
+        }          
+    }  
+}

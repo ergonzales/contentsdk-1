@@ -1,0 +1,26 @@
+/*****
+* THIS FILE ONLY APPLIES TO SITECORE XM CLOUD!
+* IF YOU RUN ON SITECORE XP/XM 9.3-10.4 THEN IGNORE OR REMOVE THIS FILE.
+*
+* USAGE:
+* ------
+* Manually apply the following JSON to your 'xmcloud.build.json' file.
+* This triggers the XDT transform at build time when performing a cloud deployment.
+*
+* The XDT configures the correct Content-Security-Policy headers that are required 
+* for the Bynder DAM Connector to work properly in the Sitecore Content Editor.
+* 
+* MAKE SURE THAT YOU update the {REPLACE_WITH_YOUR_BYNDER_PORTAL_URL} token inside
+* the 'Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt' file so it points to your own Bynder URL.
+*
+* For more details, see: https://docs.bynder.humandigital.services/configuration/csp-header
+*/
+
+{
+    "transforms": [
+        {
+            "xdtPath": "/Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt",
+            "targetPath": "/web.config"
+        }
+    ]
+}

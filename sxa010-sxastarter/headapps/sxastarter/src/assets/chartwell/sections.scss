@@ -1,0 +1,140 @@
+.heroSection {
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background-color: #f3f3f3;
+
+  // height: 100vh;
+  .heroMainContainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 30vh;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 50vh;
+    #PromoTitleFindAResidence {
+      top: -40px;
+    }
+  }
+  @media screen and (min-width: 1023px) {
+    height: 76vh;
+   #PromoTitleFindAResidence {
+      top: -36px;
+    }
+  }
+
+   @media screen and (min-width: 1400px) {
+    height: 80vh;
+     #PromoTitleFindAResidence {
+      top: -96px;
+    }
+  }
+}
+
+.propertyAddress {
+    address {
+        font-style: normal;
+        font-weight: 500;
+        color: #767477;
+        &:before {
+            display: inline-block;
+            background-image: url("/stories/Map%20Banner/chartwell_pin.svg");
+            background-size: cover;
+            animation: bounce 0.8s ease-in-out;
+            content: " ";
+
+            @media screen and (max-width: 767px) {
+                margin: -5px -5px 0 0;
+                height: 34px;
+                width: 38px;
+            }
+
+            @media screen and (min-width: 768px) {
+                margin: -5px 5px 0 0;
+                height: 35px;
+                width: 40px;
+            }
+
+            @media screen and (min-width: 1023px) {
+                height: 38px;
+                width: 40px;
+            }
+        }
+
+        &:hover {
+            color: var(--chartwell-primary-color);
+        }
+    }
+}
+
+.chartwellGallery {
+    button {
+        background-color: rgba(255, 255, 255, 0.65);
+        &:hover {
+            background-color: white;
+        }
+    }
+}
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.stickyPromoUniversal {
+	background: linear-gradient(45deg, #065F7A, #0072bb, #75baff, #8d1360);
+	background-size: 450% 400%;
+	animation: gradient 6s ease 1;
+    // padding: 10px;
+    
+    .announcementText { 
+        // font-size: 1.35rem;
+        // font-weight: bold;
+        text-shadow: 0 0 3px rgba(0,0,0,0.5);
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 1.5;
+            text-align: center !important;
+        }
+        // @media (max-width: 768px) {
+        //     p {
+        //         text-align: center !important;
+        //     }
+        //     // font-size: 1rem;
+        //     // margin-bottom:10px;
+        // }
+    }
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

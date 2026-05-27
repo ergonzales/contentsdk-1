@@ -1,0 +1,82 @@
+//common style for cards 1-2-3
+.BlogCard {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    & p,
+    .BlogCardTitle {
+        text-align: center;
+    }
+
+}
+.BlogCardContentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.BlogCategoryWrapper {
+    width: 100%;
+     border-top: 1px solid var(--chartwell-primary-color-50);
+}
+
+//Card Type one
+.BlogCard:nth-child(4n + 1) {
+    background-color: var(--chartwell-primary-color-50);
+    & p,
+    .BlogCardTitle {
+        color: white;
+    }
+    & .BlogCardContentWrapper {
+        padding: 24px;
+        padding-bottom: 0;
+    }
+    & .BlogCategoryWrapper {
+       border-top: 1px solid white;
+     
+    }
+}
+
+// Card typ 2
+.BlogCard:nth-child(4n + 2),.BlogCard:nth-child(4n + 6),.BlogCard:nth-child(4n + 7) {
+    background-color: white;
+    padding: 24px;
+    padding-bottom: 0;
+
+    & .TitleWrapper {
+        position: absolute;
+        top: 25%;
+        padding: 18px 44px;
+        & .BlogCardTitle {
+            color: white;
+            background-color: var(--chartwell-primary-color-50);
+        }
+        & p {  color: var(--chartwell-dark-gray);}
+    }
+    & .BlogCardContentWrapper {
+        margin-top: auto;
+    }
+}
+
+
+.BlogCard:nth-child(4n + 3),.BlogCard:nth-child(4n + 4),.BlogCard:nth-child(4n + 8){
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+    padding: 48px;
+    & .BlogCardContentWrapper {
+        background-color: var(--chartwell-white-color-80);
+        height: 100%;
+        padding: 20px 20px 0px 20px;
+    }
+    & .BlogCategoryWrapper{
+         background-color: var(--chartwell-white-color-80);
+    }
+    & .BlogImageWrapper {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+
+    }
+}

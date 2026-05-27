@@ -1,0 +1,59 @@
+#content .hero-banner .sc-image-wrapper {
+    opacity: 1;
+    display: block;
+}
+
+#content .hero-banner .sc-image-wrapper > * {
+        opacity: 0;
+}
+
+#content .sc-image-wrapper button.asset-selector {
+    opacity: 1 !important;
+    float: right;
+    margin: 10px 0;
+    background-color: #e56464;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: 0.2s ease;
+}
+
+#content .sc-image-wrapper button.asset-selector:hover {
+    background-color: #d15656;
+}
+
+#content .asset-selector-icon {
+  opacity: 1 !important;
+  float: right;
+  margin: 0;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 5px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d2d2d2;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px 0px #737373;
+}
+
+#content .asset-selector-icon::before {
+    content: "";
+    background-image: url('/-/icon/office/32x32/server_earth.png.aspx');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#content .sc-link-wrapper .asset-selector-icon{
+    margin: 0;
+}
+
+#content .content {
+    overflow: visible
+}

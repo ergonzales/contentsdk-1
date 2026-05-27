@@ -1,0 +1,11 @@
+#onetrust-consent-sdk {
+    button {
+        border-radius: 12px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        &#close-pc-btn-handler.ot-close-icon {
+            margin-right: 5px;
+        }
+    }
+}

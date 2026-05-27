@@ -1,0 +1,9 @@
+.Navigation, .text-base {
+    font-size: var(--chartwell-nav-font-size);
+    ;
+    text-transform: capitalize;
+}
+
+.navLink {
+    font-size: var(--chartwell-nav-font-size);
+}

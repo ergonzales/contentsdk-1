@@ -1,0 +1,265 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{090DF62A-DB37-4EE7-89AF-DE586D476255}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modules</RootNamespace>
+    <AssemblyName>Modules</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hdis.Api.Dam.Bynder.Models, Version=1.5.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hdis.Connectors.Dam.Bynder.SitecoreXp.1.5.1.1\lib\net471\Hdis.Api.Dam.Bynder.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Hdis.Connectors.Dam.Bynder.Common, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hdis.Connectors.Dam.Bynder.SitecoreXp.1.5.1.1\lib\net471\Hdis.Connectors.Dam.Bynder.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Hdis.Connectors.Dam.Bynder.SitecoreXp, Version=1.5.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hdis.Connectors.Dam.Bynder.SitecoreXp.1.5.1.1\lib\net471\Hdis.Connectors.Dam.Bynder.SitecoreXp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AssetSelector\AssetSelector.aspx" />
+    <Content Include="AssetSelector\css\style_asset_horizon.css" />
+    <Content Include="AssetSelector\js\assetSelectorHorizon.js" />
+    <Content Include="bin\Hdis.Api.Dam.Bynder.Models.dll" />
+    <Content Include="bin\Hdis.Connectors.Dam.Bynder.Common.dll" />
+    <Content Include="bin\Hdis.Connectors.Dam.Bynder.SitecoreXp.dll" />
+    <Content Include="bin\Modules.dll" />
+    <Content Include="bin\Modules.pdb" />
+    <Content Include="Hdis.Connectors.Dam.Bynder.SitecoreXp.Web.config.xdt" />
+    <Content Include="cm.Dockerfile.example" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\__Standard Values.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\Human Digital Integration Services\ApiKey.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\Human Digital Integration Services.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\Appearance\HideCspWarning.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\Appearance\FirstRun.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings\Appearance.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam\ConnectorSettings.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis\Dam.item" />
+    <Content Include="App_Data\serialization\master\sitecore\templates\Hdis.item" />
+    <Content Include="App_Data\serialization\master\sitecore\system\Modules\DAM Connector Settings.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 3\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 3\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 3\Divider 2.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 1\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 1\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA\Toolbar 1\Divider.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA Stylelabs\Toolbar 1\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA Stylelabs\Toolbar 1\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text XA Stylelabs\Toolbar 1\Divider 2.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Medium\Toolbar 3\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Medium\Toolbar 3\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Medium\Toolbar 3\Divider 2.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text IDE\Toolbar 3\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text IDE\Toolbar 3\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text IDE\Toolbar 3\Divider 2.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Full\Toolbar 3\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Full\Toolbar 3\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Full\Toolbar 3\Divider 2.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Default\Toolbar 1\Insert DAM Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Default\Toolbar 1\Insert DAM Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Settings\Html Editor Profiles\Rich Text Default\Toolbar 1\Divider Hdis.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\System Types\HdisApiKey\Menu\Reload Configuration.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\System Types\HdisApiKey\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\System Types\HdisApiKey.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\WebEdit Buttons\Image Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\WebEdit Buttons\Clear Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\WebEdit Buttons\Choose Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\BrowseSingleAssetFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\BrowseSingleAsset.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\BrowseMultipleAssets.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu\BrowseMedia.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\Developer Types\HdisImageGeneric.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\WebEdit Buttons\Clear video.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\Menu\BrowseSingleAssetFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisVideoSingleFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\WebEdit Buttons\Image Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\WebEdit Buttons\Clear Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\WebEdit Buttons\Choose Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\Menu\Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\Menu\BrowseSingleAssetFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\Menu\BrowseMedia.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\WebEdit Buttons\Image Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\WebEdit Buttons\Clear Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\WebEdit Buttons\Choose Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\Menu\Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\Menu\BrowseSingleAsset.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\Menu\BrowseMedia.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageSingleAsset.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\WebEdit Buttons\Image Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\WebEdit Buttons\Clear Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\WebEdit Buttons\Choose Image.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\Menu\Properties.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\Menu\BrowseMultipleAssets.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\Menu\BrowseMedia.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisImageMultiAsset.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\WebEdit Buttons\Edit link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\WebEdit Buttons\Clear Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Mail to.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Javascript.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Internal link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Follow.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\External link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\DAM link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu\Anchor.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\WebEdit Buttons\Select from DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\WebEdit Buttons\Edit link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\WebEdit Buttons\Clear Link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\WebEdit Buttons.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Search.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Media.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Mail to.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Javascript.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Internal link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Follow.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\External link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\DAM link.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu\Anchor.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLinkSearch.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisGeneralLink.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu\View File.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu\Download.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu\Clear.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu\Browse.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu\Browse DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile\Menu.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types\HdisFile.item" />
+    <Content Include="App_Data\serialization\core\sitecore\system\Field types\DAM Field Types.item" />
+    <Content Include="App_Data\serialization\core\sitecore\content\Applications\Content Editor\Ribbons\Strips\Home\DAM.item" />
+    <Content Include="App_Data\serialization\core\sitecore\content\Applications\Content Editor\Ribbons\Chunks\DAM\Update references.item" />
+    <Content Include="App_Data\serialization\core\sitecore\content\Applications\Content Editor\Ribbons\Chunks\DAM.item" />
+    <Content Include="App_Data\items\master\items.master.Hdis.Connectors.Dam.Bynder.dat" />
+    <Content Include="App_Data\items\core\items.core.Hdis.Connectors.Dam.Bynder.dat" />
+    <Content Include="App_Config\Include\Hdis.Connectors\Dam.Bynder.Sxa.config.disabled" />
+    <Content Include="App_Config\Include\Hdis.Connectors\Dam.Bynder.config" />
+    <Content Include="bin\Modules.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Web.config" />
+    <Content Include="sitecore\shell\Applications\Content Manager\CustomFieldEditor.aspx" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\Hdis\InsertDamLink.js.aspx" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\Hdis\InsertDamMedia.js.aspx" />
+    <Content Include="sitecore\shell\Hdis\FirstRunCheck.js.aspx" />
+    <Content Include="sitecore\shell\Hdis\WebConfigUpdater.aspx" />
+    <Content Include="xmcloud.build.json.example" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50696</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50696/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

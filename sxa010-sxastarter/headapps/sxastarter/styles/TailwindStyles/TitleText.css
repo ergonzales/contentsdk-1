@@ -1,0 +1,43 @@
+@tailwind components;
+
+@layer components {
+  /* TITLE STYLES */
+
+  .ChartwellTitleH1Option1 {
+    @apply text-ChartwellPlum font-light leading-[1.5] text-[3.125rem];
+  }
+
+  .ChartwellTitleH1Option2 {
+    @apply text-white font-light leading-[1.5] text-[3.125rem];
+  }
+
+  .ChartwellTitleH2 {
+    @apply text-ChartwellPlum font-normal leading-[1.5] text-[2.5rem];
+  }
+
+  .ChartwellTitleH3 {
+    @apply text-ChartwellPlum font-semibold leading-[1.5]  text-[1.875rem];
+  }
+
+  .ChartwellTitleCardH3 {
+    @apply text-ChartwellPlum font-semibold leading-[1.5] text-[1.5rem];
+  }
+
+  /* TEXT STYLES */
+
+  .ChartwellText {
+    @apply text-ChartwellGrey font-normal leading-[1.65] text-[1rem];
+  }
+
+  .ChartwellFooterText {
+    @apply text-ChartwellWhite font-normal leading-[1.5] text-[0.75rem];
+  }
+
+  .ChartwellStrongText {
+    @apply text-ChartwellGrey font-semibold leading-[1.5] text-[1rem];
+  }
+
+  .ChartwellStrongReversedText {
+    @apply text-white font-semibold leading-[1.5] text-[1rem];
+  }
+}

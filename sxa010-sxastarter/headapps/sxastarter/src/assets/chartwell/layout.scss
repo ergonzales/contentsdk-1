@@ -1,0 +1,66 @@
+@import './variables';
+
+body {
+    padding-top: 0;
+    background-color: white;
+}
+
+#cwLayoutContainer {
+    position: relative;
+    // padding-top: 60px;
+    // @media screen and (max-width: 768px){
+    //     padding-top: 80px;
+    // }    
+}
+
+header#headerContainer {
+    position: sticky;
+    top: 0;
+    display: block;
+    z-index: 40;
+    @media print {
+        position: relative;
+    }
+}
+
+#cwApp { 
+    #nprogress {
+        .bar { height: 5px; background-color: var(--chartwell-primary-color)}  
+        .spinner {
+            top: 50%;
+            right: 50%;
+            margin-left: -25px;
+            margin-right: -25px;
+        }
+        .spinner-icon {
+            width: 50px;
+            height: 50px;
+            box-sizing: border-box;
+            border: solid 2px transparent;
+            border-top-color: var(--chartwell-primary-color);
+            border-left-color: var(--chartwell-primary-color);
+            border-radius: 50%;
+            -webkit-animation: nprogresss-spinner 400ms linear infinite;
+            animation: nprogress-spinner 400ms linear infinite;
+        }        
+        .peg {
+            box-shadow: none;
+        }        
+
+    }
+
+    byoc-sitecore-form {
+        margin: auto;
+
+        .main-form-wrapper {
+            .content {
+                max-width: 1360px !important;
+            }
+        }
+    }
+}
+
+.chartwellModal {
+    justify-content: center;
+    align-items: center;
+}
