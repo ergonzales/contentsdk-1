@@ -17,7 +17,7 @@ const BlogPostList = (props: any): JSX.Element => {
   const { t: dict } = useI18n();
   const { page } = useSitecore();
   const sitecoreContext = page?.layout?.sitecore?.context;
-  const route = sitecoreContext?.route as { templateName?: string; itemId?: string; name?: string } | undefined;
+  const route = page?.layout?.sitecore?.route;
   const [blogList, setBlogList] = useState<any[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +58,7 @@ const BlogPostList = (props: any): JSX.Element => {
     );
 
     let filteredResult = result;
-    if (route && typeof route === 'object' && 'templateName' in route) {
+    if (route && typeof route === "object" && "templateName" in route) {
       if (route.templateName === "BlogCategory") {
         filteredResult = result.filter((el: any) => el.blogCategoryId === (route.itemId ?? "").replaceAll("-", "").toUpperCase());
       } else if (route.templateName === "BlogArticle") {
@@ -94,12 +94,8 @@ const BlogPostList = (props: any): JSX.Element => {
 
   return (
     <div className="ChartwellContainer bg-ChartwellGrey-10 blogPostList mt-4 mb-4 pt-8 pb-8">
-      {route && typeof route === 'object' && 'templateName' in route && route.templateName === "BlogArticle" && (
-        <h2 className="uppercase font-normal mt-4 mb-3 text-2xl">{dict("RelatedArticles")}</h2>
-      )}
-      {route && typeof route === 'object' && 'templateName' in route && route.templateName === "BlogAuthor" && (
-        <h2 className="uppercase font-normal mt-4 mb-3 text-2xl">{blogPosts[0]?.authorCTA}</h2>
-      )}
+      {route && typeof route === "object" && "templateName" in route && route.templateName === "BlogArticle" && <h2 className="uppercase font-normal mt-4 mb-3 text-2xl">{dict("RelatedArticles")}</h2>}
+      {route && typeof route === "object" && "templateName" in route && route.templateName === "BlogAuthor" && <h2 className="uppercase font-normal mt-4 mb-3 text-2xl">{blogPosts[0]?.authorCTA}</h2>}
       <div>
         <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((card, index) => (
