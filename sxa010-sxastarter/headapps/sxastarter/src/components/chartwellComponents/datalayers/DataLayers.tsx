@@ -50,7 +50,12 @@ export const ChartwellDataLayer = () => {
   const isOpenHousePage = getIsOpenHousePage(sitecoreContext);
   const isBlogPage = getIsBlogPage(sitecoreContext);
 
-  const currLang = sitecoreContext.route?.itemLanguage?.toUpperCase();
+  // As part of the ContentSDK migration context object will be available under page?.layout?.sitecore?.context where page is the prop passed to the component.
+  //  Example -   const { page } = useSitecore(); This hook grants acсess to the current Sitecore page and api.
+  //  const sitecoreContext = page?.layout?.sitecore?.context;
+
+  // const currLang = sitecoreContext.route?.itemLanguage?.toUpperCase();
+  const currLang = sitecoreContext?.language?.toUpperCase();
 
   const [corporateDataLayersFired, setCorporateDataLayersFired] = useState(false);
 
@@ -61,7 +66,7 @@ export const ChartwellDataLayer = () => {
       }
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(dlObject);
+      window?.dataLayer?.push(dlObject);
       if (window.location.href.includes("localhost")) {
         const dlDebug: any = {};
         dlDebug.debug = {
@@ -79,7 +84,7 @@ export const ChartwellDataLayer = () => {
           blogPage: isBlogPage,
           src: "Datalayers",
         };
-        window.dataLayer.push(dlDebug);
+        window?.dataLayer?.push(dlDebug);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
