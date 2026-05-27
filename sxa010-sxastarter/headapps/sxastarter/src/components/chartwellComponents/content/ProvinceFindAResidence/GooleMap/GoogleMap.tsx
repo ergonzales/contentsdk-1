@@ -58,12 +58,14 @@ export const GoogleMap: React.FC<GoogleMapProps> = ({ residences, zoom = 10 }) =
       img.src = MARKER_PNG_URL;
       img.style.width = "40px";
       img.style.height = "40px";
+      img.style.pointerEvents = "none";
       img.alt = "Chartwell Marker";
       const marker = new AdvancedMarkerElement({
         position: residence.latlng,
         map,
         title: residence.residenceName,
         content: img,
+        gmpClickable: true,
       });
       marker.addEventListener("gmp-click", () => {
         const contentHtml = ReactDOMServer.renderToString(<InfoWindowContent residence={residence} dictionary={dictionary} getCareServicesBgColorIcon={getCareServicesBgColorIcon} />);

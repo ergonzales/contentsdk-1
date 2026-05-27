@@ -1,4 +1,3 @@
-import { NextImage } from "@sitecore-content-sdk/nextjs";
 import React from "react";
 
 interface InfoWindowContentProps {
@@ -34,6 +33,12 @@ interface InfoWindowContentProps {
  * - Uses Tailwind CSS classes for styling.
  */
 const InfoWindowContent: React.FC<InfoWindowContentProps> = ({ residence, dictionary, getCareServicesBgColorIcon }) => {
+  const getIconSrc = (icon: any): string => {
+    if (!icon) return "";
+    if (typeof icon === "string") return icon;
+    return icon?.src || icon?.value?.src || icon?.url || "";
+  };
+
   return (
     <div className="max-w-[320px]">
       <div className="relative overflow-hidden">
@@ -41,12 +46,13 @@ const InfoWindowContent: React.FC<InfoWindowContentProps> = ({ residence, dictio
         <ul className="flex gap-2 absolute top-0 right-0 p-1">
           {residence.livingOption.map((option) => {
             const icon = residence.livingOptionsObj.find((item: any) => item?.careServiceName?.value === option)?.careServiceIcon?.jsonValue?.value || "";
+            const iconSrc = getIconSrc(icon);
             const { bgColor, textColor } = getCareServicesBgColorIcon(option);
             return (
-              icon && (
+              iconSrc && (
                 <li key={option} className="text-[1rem] flex gap-1 p-1 bg-ChartwellWhite rounded-full">
                   <div className="group relative cursor-pointer">
-                    <NextImage field={icon} width={26} height={26} />
+                    <img src={iconSrc} alt={option} width={26} height={26} />
                     <div
                       className={`group-hover:translate-x-0 eas-in-out duration-300 ${bgColor} p-2 text-[0.9rem] ${textColor} font-bold rounded-md absolute right-0 top-1/2 translate-x-[200%] mt-6 z-10 text-center whitespace-nowrap`}
                     >
