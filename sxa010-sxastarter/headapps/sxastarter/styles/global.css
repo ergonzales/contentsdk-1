@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.cw-font-vars {
+  --chartwell-body-fonts: var(--font-kumbh-sans), -apple-system, Helvetica Neue, sans-serif;
+  --chartwell-cursive-fonts: var(--font-birthstone), cursive, serif;
+  --chartwell-open-sans-fonts: var(--font-open-sans), Helvetica, Verdana, Tahoma, sans-serif;
+}
+
 @layer base {
   :root {
     --cw-heading-color-plum: rgb(140, 19, 96);

@@ -14,8 +14,10 @@ export const HeroImagesBg = ({ index, currentIndex, Images, bgPosition }: IProps
         src={Images?.src}
         alt={Images?.alt}
         quality={70}
-        priority={true}
+        priority={index === 0}
+        fetchPriority={index === 0 ? "high" : "auto"}
         fill
+        sizes="100vw"
         className={`object-cover ${index === currentIndex ? "opacity-100" : "opacity-0"} duration-300 ease-in-out w-auto ${styleBackGroundPosition}`}
       />
     </div>

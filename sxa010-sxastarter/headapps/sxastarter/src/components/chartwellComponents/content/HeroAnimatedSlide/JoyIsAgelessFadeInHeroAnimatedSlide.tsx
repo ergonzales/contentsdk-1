@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface HeroAnimatedSlideProps {
   animation?: string;
@@ -12,6 +13,8 @@ interface HeroAnimatedSlideProps {
 }
 
 const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ animation, slideAnimatedText, slideStaticText, ctaLink, Tag, isQuebec, linkTargetHref, bkgImage }) => {
+  const heroImageUrl = bkgImage?.url || "";
+  const heroImageAlt = bkgImage?.alt || "Chartwell hero image";
   // Helper to inject class if <span> is present
   function renderWordWithClass(word: string, index: number) {
     // If the word contains a <span>, animate only the span content, keep the rest static
@@ -46,8 +49,6 @@ const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ anima
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap');
-
         /* --- Animation Keyframes and General Styles --- */
         @keyframes kenBurns {
             0% { filter: blur(4px); transform: translateX(-5%) scale(1.05); }
@@ -125,14 +126,7 @@ const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ anima
             height: 360px;
             overflow: hidden;
         }
-        .background-image {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('${bkgImage?.url || ""}');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-        }
+        .background-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-image { position: absolute; top: 0; left: 0; width: 110%; height: 110%; object-fit: cover; object-position: center; z-index: 1; }
         .background-image { display: none !important; }
 
@@ -165,7 +159,6 @@ const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ anima
         .openhouseanimation .letter { opacity: 0; display: inline-block; animation: letterFadeIn 0.4s forwards; }
        
         ${elementID}.scene-container {
-            background-image: url('${bkgImage?.url || ""}') !important;
             background-size: cover;
             background-position: center 33%;
             overflow: hidden;
@@ -240,6 +233,7 @@ const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ anima
             if (linkTargetHref) self.location.href = linkTargetHref;
           }}
         >
+          {heroImageUrl && <Image src={heroImageUrl} alt={heroImageAlt} fill priority fetchPriority="high" sizes="100vw" quality={70} className="hero-image" />}
           <div className="flex flex-row w-full content-end heroContentContainer">
             {slideStaticText && <div className="staticText" dangerouslySetInnerHTML={{ __html: slideStaticText || "" }}></div>}
             <div className="delight-text-container flex justify-start items-center">
@@ -247,9 +241,7 @@ const JoyIsAgelessHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ anima
                 React.createElement(
                   Tag || "h1",
                   { className: "inviting-copy", id: "SlideText" },
-                  (slideAnimatedText || []).map((word: string, index: number) => (
-                    <React.Fragment key={`${index}-${word}`}>{renderWordWithClass(word, index)}</React.Fragment>
-                  ))
+                  (slideAnimatedText || []).map((word: string, index: number) => <React.Fragment key={`${index}-${word}`}>{renderWordWithClass(word, index)}</React.Fragment>)
                 )}
               {/* {animation !== "Joy is ageless fade in" && (
                 <a href="#" className="cta-button">
