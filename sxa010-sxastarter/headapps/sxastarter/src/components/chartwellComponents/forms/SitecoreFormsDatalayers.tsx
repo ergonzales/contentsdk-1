@@ -35,6 +35,7 @@ import {
 import { getAddressCompleteConfig } from "lib/helpers/form/addressCompleteConfig";
 import { getCustomLocalizedAddress } from "lib/helpers/helper";
 import { useSitecoreContext } from "lib/sitecore/useSitecoreContext";
+import type { SitecoreContextValue, UseSitecoreContextResult } from "lib/sitecore/types";
 interface FormState {
   isPropertyPage: boolean;
   isAmIReady: boolean;
@@ -59,7 +60,7 @@ interface ResidenceData {
   };
 }
 
-const useFormState = (sitecoreContext: any) => {
+const useFormState = (sitecoreContext: SitecoreContextValue) => {
   const [formState, setFormState] = useState<FormState>({
     isPropertyPage: false,
     isAmIReady: false,
@@ -134,7 +135,7 @@ const useFormState = (sitecoreContext: any) => {
   return { formState, setFormState, allResidenceData };
 };
 
-const useDataLayer = (pageContext: any, formState: FormState) => {
+const useDataLayer = (pageContext: UseSitecoreContextResult, formState: FormState) => {
   const DataLayerPush = useCallback(
     (dlObject: any) => {
       const dataLayer = (window.dataLayer = window.dataLayer || []);
@@ -333,8 +334,11 @@ const SitecoreFormsDatalayers = () => {
   }, [formState.propPageYardiID, formState.isFormLoaded, allResidenceData, pageContext.sitecoreContext.language]);
 
   useEffect(() => {
-    if (formState.isFormLoaded) {
-      const form = document.querySelector("form[data-formid]");
+    if (!formState.isFormLoaded) {
+      return undefined;
+    }
+
+    const form = document.querySelector("form[data-formid]");
       const submitButton: HTMLButtonElement = (form as HTMLFormElement)?.querySelector("button.lp-flex-container.submit-button") as HTMLButtonElement;
       let purchaseSubmitButton: HTMLButtonElement | null = null;
       let purchaseClickHandler: (() => void) | null = null;
@@ -623,13 +627,12 @@ const SitecoreFormsDatalayers = () => {
         });
       }
 
-      return () => {
-        if (purchaseSubmitButton && purchaseClickHandler) {
-          purchaseSubmitButton.removeEventListener("click", purchaseClickHandler);
-          purchaseSubmitButton.removeAttribute(PURCHASE_LISTENER_ATTR);
-        }
-      };
-    }
+    return () => {
+      if (purchaseSubmitButton && purchaseClickHandler) {
+        purchaseSubmitButton.removeEventListener("click", purchaseClickHandler);
+        purchaseSubmitButton.removeAttribute(PURCHASE_LISTENER_ATTR);
+      }
+    };
   }, [
     pageContext.sitecoreContext.language,
     DataLayerPush,
