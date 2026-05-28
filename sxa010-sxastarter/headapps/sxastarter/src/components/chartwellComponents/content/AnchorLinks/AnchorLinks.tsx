@@ -14,8 +14,8 @@ type AnchorLinksProps = ComponentProps & {
 
 const AnchorLinks = (props: AnchorLinksProps): JSX.Element => {
   const { page } = useSitecore();
-  const sitecoreContext = page?.layout?.sitecore?.context || {};
-  const route = sitecoreContext?.route as { placeholders?: Record<string, any[]>; itemLanguage?: string } | undefined;
+  // const sitecoreContext = page?.layout?.sitecore?.context || {};
+  const route = page?.layout?.sitecore?.route as { placeholders?: Record<string, any[]>; itemLanguage?: string } | undefined;
   const Links = (props?.fields && props?.fields?.["CTA Texts"]?.value?.split(",")) || [];
   const Title = props?.fields?.Title?.value || "";
   const borderPosition = props?.fields && props?.fields?.["Divider top"]?.value ? "border-t " : "border-b";
