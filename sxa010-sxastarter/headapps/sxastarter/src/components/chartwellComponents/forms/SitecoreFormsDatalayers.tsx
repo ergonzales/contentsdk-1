@@ -249,12 +249,14 @@ const useFormHandlers = (formState: FormState, allResidenceData: ResidenceData, 
   return { setLocalStorageSubmitter, updateEvent };
 };
 
+const PURCHASE_LISTENER_ATTR = "data-chartwell-purchase-listener";
+const PURCHASE_FIRED_ATTR = "data-chartwell-purchase-fired";
+
 const SitecoreFormsDatalayers = () => {
   const pageContext = useSitecoreContext();
   const { formState, setFormState, allResidenceData } = useFormState(pageContext.sitecoreContext);
   const { DataLayerPush } = useDataLayer(pageContext, formState);
   const { setLocalStorageSubmitter, updateEvent } = useFormHandlers(formState, allResidenceData, DataLayerPush);
-  const [purchaseEventFired, setPurchaseEventFired] = useState(false);
   const [yardiID, setYardiID] = useState({ id: "", name: "" });
 
   useEffect(() => {
@@ -334,6 +336,8 @@ const SitecoreFormsDatalayers = () => {
     if (formState.isFormLoaded) {
       const form = document.querySelector("form[data-formid]");
       const submitButton: HTMLButtonElement = (form as HTMLFormElement)?.querySelector("button.lp-flex-container.submit-button") as HTMLButtonElement;
+      let purchaseSubmitButton: HTMLButtonElement | null = null;
+      let purchaseClickHandler: (() => void) | null = null;
       //we sanitize all form inputs
       sanitizeInputs(form as HTMLFormElement);
 
@@ -479,8 +483,12 @@ const SitecoreFormsDatalayers = () => {
           }
         });
 
-        // Ensure the purchase event can only occur once per submit
-        submitButton?.addEventListener("click", () => {
+        const formEl = form as HTMLFormElement;
+        const handleBookATourPurchaseClick = () => {
+          if (formEl.getAttribute(PURCHASE_FIRED_ATTR) === "true") {
+            return;
+          }
+
           let yardiID = (document.querySelector("[name='residenceofInterest1']") as HTMLInputElement)?.value;
           const contactType = (document.querySelector("[name='contactType']") as HTMLInputElement)?.value == "SLF" ? "for myself" : "for a loved one";
           const propertyDetails: any = yardiID ? getPropertyDetailsByID(yardiID, allResidenceData) : {};
@@ -493,20 +501,18 @@ const SitecoreFormsDatalayers = () => {
           }
 
           yardiID = formState.isExpansionPage ? getExpansionPageYardiID(yardiID) : yardiID;
-          const hasErrors = (form as HTMLFormElement).querySelectorAll(".form-input-error-field").length ? true : false;
+          const hasErrors = formEl.querySelectorAll(".form-input-error-field").length ? true : false;
 
-          if (purchaseEventFired) return;
           setLocalStorageSubmitter();
 
           if (!hasErrors) {
-            setPurchaseEventFired(true);
+            formEl.setAttribute(PURCHASE_FIRED_ATTR, "true");
 
             window.dataLayer = window.dataLayer || [];
 
             //and set residence details for thank you page
             localStorage.setItem("chartwellBookTourResidence", JSON.stringify({ resName: propertyDetails.name, resAddress: propertyDetails.streetAddress }));
 
-            window.dataLayer = window.dataLayer || [];
             DataLayerPush({
               event: "purchase",
               ecommerce: {
@@ -531,7 +537,14 @@ const SitecoreFormsDatalayers = () => {
               },
             });
           }
-        });
+        };
+
+        if (submitButton && !submitButton.hasAttribute(PURCHASE_LISTENER_ATTR)) {
+          submitButton.setAttribute(PURCHASE_LISTENER_ATTR, "true");
+          submitButton.addEventListener("click", handleBookATourPurchaseClick);
+          purchaseSubmitButton = submitButton;
+          purchaseClickHandler = handleBookATourPurchaseClick;
+        }
       }
       if (formState.isContactUs) {
         waitForElement("button.lp-flex-container.submit-button").then(() => {
@@ -609,10 +622,16 @@ const SitecoreFormsDatalayers = () => {
           }, 500);
         });
       }
+
+      return () => {
+        if (purchaseSubmitButton && purchaseClickHandler) {
+          purchaseSubmitButton.removeEventListener("click", purchaseClickHandler);
+          purchaseSubmitButton.removeAttribute(PURCHASE_LISTENER_ATTR);
+        }
+      };
     }
   }, [
     pageContext.sitecoreContext.language,
-    pageContext.sitecoreContext.route,
     DataLayerPush,
     allResidenceData,
     formState.isBookATour,
@@ -628,9 +647,8 @@ const SitecoreFormsDatalayers = () => {
     formState.isSubscribePage,
     formState.propPageYardiID,
     formState.isOpenHousePage,
+    formState.isExpansionPage,
     formState.hasAddressField,
-    formState,
-    pageContext.sitecoreContext,
   ]);
 };
 export default SitecoreFormsDatalayers;

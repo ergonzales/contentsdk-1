@@ -46,8 +46,6 @@ const OpenHouseHeroAnimatedSlide: React.FC<HeroAnimatedSlideProps> = ({ animatio
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap');
-
         /* --- Animation Keyframes and General Styles --- */
         @keyframes kenBurns {
             0% { filter: blur(4px); transform: translateX(-5%) scale(1.05); }

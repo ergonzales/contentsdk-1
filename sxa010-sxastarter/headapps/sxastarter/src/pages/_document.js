@@ -5,7 +5,6 @@ export default function Document() {
             <Head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-                <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Kumbh+Sans:wght@100;300;400;600;700;800&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
                 <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
                 <script

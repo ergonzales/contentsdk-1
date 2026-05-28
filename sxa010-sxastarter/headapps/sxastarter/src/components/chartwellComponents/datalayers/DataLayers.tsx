@@ -54,8 +54,7 @@ export const ChartwellDataLayer = () => {
   //  Example -   const { page } = useSitecore(); This hook grants acсess to the current Sitecore page and api.
   //  const sitecoreContext = page?.layout?.sitecore?.context;
 
-  // const currLang = sitecoreContext.route?.itemLanguage?.toUpperCase();
-  const currLang = sitecoreContext?.language?.toUpperCase();
+  const currLang = (sitecoreContext?.language ?? sitecoreContext.route?.itemLanguage)?.toUpperCase();
 
   const [corporateDataLayersFired, setCorporateDataLayersFired] = useState(false);
 
@@ -87,8 +86,20 @@ export const ChartwellDataLayer = () => {
         window?.dataLayer?.push(dlDebug);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sitecoreContext.route?.itemLanguage]
+    [
+      currLang,
+      isAmIReady,
+      isASurvey,
+      isBlogPage,
+      isBookATour,
+      isContactUs,
+      isItTime,
+      isOpenHousePage,
+      isPropertyPage,
+      isResourcePage,
+      isSubscribePage,
+      isThankYouPage,
+    ]
   );
 
   //get data layer values for property pages
