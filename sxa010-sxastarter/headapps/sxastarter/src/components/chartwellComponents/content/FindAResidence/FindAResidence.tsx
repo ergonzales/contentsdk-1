@@ -1,5 +1,5 @@
 import { RichText } from "@sitecore-content-sdk/nextjs";
-import { useCallback, useEffect, useState, JSX, useRef } from "react";
+import { useEffect, useState, JSX, useRef } from "react";
 import { useRouter } from "next/router";
 import { NextImageBkg } from "components/chartwellComponents/ui/BackgroundImage/BackgroundImage";
 import { getCareServices, getProvinces, getRowsByCityAndResidenceName, getRowsForPostalCode } from "lib/helpers/residence-helpers/index";
@@ -95,7 +95,7 @@ const FindAResidence = (props: any): JSX.Element => {
   const provinceList = getProvinces(router, sitecoreContext);
 
   // Filter care options
-  const handleFilterCareOptions = useCallback(() => {
+  useEffect(() => {
     const commonCareOptions: CareServices[] = getCareServices(router, sitecoreContext) || [];
     const residenceLivingOptions = ResidencesList?.flatMap((res: any) => res?.livingOptions?.map((option: CareServices) => option.id));
     const uniqueLivingOptions = residenceLivingOptions?.length > 1 ? [...new Set(residenceLivingOptions)] : [];
@@ -107,11 +107,8 @@ const FindAResidence = (props: any): JSX.Element => {
       selected: false,
     }));
     setSelectedFilterOptions((prev) => (areFilterOptionsEqual(prev, disabledFilterOption) ? prev : disabledFilterOption));
-  }, [router, sitecoreContext, ResidencesList]);
-
-  useEffect(() => {
-    handleFilterCareOptions();
-  }, [handleFilterCareOptions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ResidencesList, routerLocale, routerAsPath]);
 
   // Handle filter option change
   const handlerFilterOption = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
