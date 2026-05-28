@@ -6,7 +6,7 @@ import { Dispatch, JSXElementConstructor, ReactElement, SetStateAction } from "r
 import { ResidenceListModel } from "src/models/Residence";
 
 export const GoogleMapWrapper = ({ residences, setIsGoogleMapAvailable, zoom }: { residences: ResidenceListModel[]; setIsGoogleMapAvailable: Dispatch<SetStateAction<boolean>>; zoom?: number }) => {
-  const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+  const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   const DynamicGoogleMap = dynamic(() => Promise.resolve(GoogleMap), {
     ssr: false,
