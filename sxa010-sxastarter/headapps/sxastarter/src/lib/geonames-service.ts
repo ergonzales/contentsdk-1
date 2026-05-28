@@ -7,8 +7,8 @@ export class GeonamesService {
 
   constructor() {
     this.geonamesInstance = Geonames({
-      username: process.env.GEONAMES_USERNAME || "chartwellrr",
-      token: process.env.GEONAMES_TOKEN || "chartwellrr",
+      username: process.env.GEONAMES_USERNAME,
+      token: process.env.GEONAMES_TOKEN,
       lan: "en",
       encoding: "JSON",
     });

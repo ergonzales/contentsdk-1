@@ -44,3 +44,11 @@ _ReSharper*/
 packages/
 .vercel
 
+# local env files — never commit secrets
+.env
+.env.local
+.env*.local
+headapps/sxastarter/.env
+headapps/sxastarter/.env.local
+headapps/sxastarter/.env*.local
+

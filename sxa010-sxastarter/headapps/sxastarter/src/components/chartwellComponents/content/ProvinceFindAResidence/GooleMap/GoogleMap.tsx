@@ -35,7 +35,7 @@ export const GoogleMap: React.FC<GoogleMapProps> = ({ residences, zoom = 10 }) =
   const ref = useRef<HTMLDivElement | null>(null);
   // No need to fetch SVG, just use the DAM URL
   const MARKER_PNG_URL = "https://dam.chartwell.com/m/95a55a0d8719fa4/mini-google-map-chartwell-pin-01.png"; // TODO: need to grab this from the content instead of hard coded url
-  const GOOGLE_MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID || "DEMO_MAP_ID";
+  const GOOGLE_MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID;
   const { sitecoreContext } = useSitecoreContext();
   const { t: dictionary } = useI18n();
 
