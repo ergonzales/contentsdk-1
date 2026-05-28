@@ -1,8 +1,3 @@
-// const API_KEY = "864825cd9dc732cd92cd24e16694fd276047e1055db9645be04c1e99ee6ac63a";
-// const API_KEY = "f035fdd0e8dd53e8cf56719cb98fa59d75648341ad6e01d456b7192cd37c4577"; //over 100 request
-
-// import scConfig from 'sitecore.config';
-
 export default async function handler(req: any, res: any) {
   const { place_id, sort_by, next_page_token } = req.query;
   // const API_KEY = config.serpApiKey;
