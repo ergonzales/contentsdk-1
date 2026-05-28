@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useSitecore } from "@sitecore-content-sdk/nextjs";
 
 /**
@@ -7,13 +8,19 @@ import { useSitecore } from "@sitecore-content-sdk/nextjs";
 export const useSitecoreContext = () => {
   const { page } = useSitecore();
 
-  const context = (page?.layout?.sitecore?.context || {}) as Record<string, any>;
-  const route = context?.route || (page?.layout?.sitecore?.route as Record<string, any>) || {};
+  const layoutSitecore = page?.layout?.sitecore;
+  const context = layoutSitecore?.context;
+  const route = layoutSitecore?.route;
 
-  return {
-    sitecoreContext: {
-      ...context,
-      route,
-    } as any,
-  };
+  const sitecoreContext = useMemo(() => {
+    const ctx = (context || {}) as Record<string, any>;
+    const resolvedRoute = (route || ctx?.route || {}) as Record<string, any>;
+
+    return {
+      ...ctx,
+      route: resolvedRoute,
+    };
+  }, [context, route]);
+
+  return { sitecoreContext };
 };
