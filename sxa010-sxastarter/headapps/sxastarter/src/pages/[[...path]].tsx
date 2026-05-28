@@ -42,12 +42,13 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
   let paths: StaticPath[] = [];
   let fallback: boolean | "blocking" = "blocking";
+  const fetchOptions = typeof globalThis.fetch === "function" ? { fetch: globalThis.fetch.bind(globalThis) } : undefined;
 
   if (process.env.NODE_ENV !== "development" && scConfig.generateStaticPaths) {
     try {
       const siteNames = [...new Set(siteResolver.sites.map((site) => site.name))];
 
-      paths = await client.getPagePaths(siteNames, context?.locales || []);
+      paths = await client.getPagePaths(siteNames, context?.locales || [], fetchOptions);
     } catch (error) {
       console.log("Error occurred while fetching static paths");
       console.log(error);
@@ -67,6 +68,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 // revalidation (or fallback) is enabled and a new request comes in.
 export const getStaticProps: GetStaticProps = async (context) => {
   let props = {};
+  const fetchOptions = typeof globalThis.fetch === "function" ? { fetch: globalThis.fetch.bind(globalThis) } : undefined;
   const extractedPath = extractPath(context);
   const siteToken = `_site_${scConfig.defaultSite}`;
   const siteHomePath = `/${siteToken}`;
@@ -112,7 +114,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 
     for (const candidate of candidates) {
-      const result = await client.getPage(candidate, { locale: context.locale });
+      const result = await client.getPage(candidate, { locale: context.locale }, fetchOptions);
       if (result) return result;
     }
 
@@ -122,7 +124,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (context.preview && isDesignLibraryPreviewData(context.previewData)) {
     page = await client.getDesignLibraryData(context.previewData);
   } else {
-    page = context.preview ? await client.getPreview(context.previewData) : await getPageFromCandidates(requestedPath);
+    page = context.preview ? await client.getPreview(context.previewData, fetchOptions) : await getPageFromCandidates(requestedPath);
   }
   if (page) {
     props = {
@@ -130,7 +132,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       dictionary: await client.getDictionary({
         site: page.siteName,
         locale: page.locale,
-      }),
+      }, fetchOptions),
       componentProps: await client.getComponentData(page.layout, context, components),
     };
   }

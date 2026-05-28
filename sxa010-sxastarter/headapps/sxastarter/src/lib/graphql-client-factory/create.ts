@@ -8,16 +8,19 @@ import { JssConfig } from "lib/config";
  */
 export const createGraphQLClientFactory = (config: JssConfig) => {
   let clientConfig: GraphQLRequestClientFactoryConfig;
+  const nativeFetch = typeof globalThis.fetch === "function" ? globalThis.fetch.bind(globalThis) : undefined;
 
   if (config.sitecoreEdgeContextId) {
     clientConfig = {
       endpoint: getEdgeProxyContentUrl(config.sitecoreEdgeUrl),
       contextId: config.sitecoreEdgeContextId,
+      ...(nativeFetch ? { fetch: nativeFetch } : {}),
     };
   } else if (config.graphQLEndpoint && config.sitecoreApiKey) {
     clientConfig = {
       endpoint: config.graphQLEndpoint,
       apiKey: config.sitecoreApiKey,
+      ...(nativeFetch ? { fetch: nativeFetch } : {}),
     };
   } else {
     throw new Error("Please configure either your sitecoreEdgeContextId, or your graphQLEndpoint and sitecoreApiKey.");

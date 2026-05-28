@@ -17,8 +17,9 @@ class GraphqlSitemapServicePlugin implements SitemapFetcherPlugin {
         ? [scConfig.defaultLanguage]
         : undefined
       : context?.locales;
+    const fetchOptions = typeof globalThis.fetch === "function" ? { fetch: globalThis.fetch.bind(globalThis) } : undefined;
 
-    return client.getPagePaths(sites, languages);
+    return client.getPagePaths(sites, languages, fetchOptions);
   }
 }
 

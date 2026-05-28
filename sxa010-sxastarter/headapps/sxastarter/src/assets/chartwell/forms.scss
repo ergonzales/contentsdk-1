@@ -20,12 +20,12 @@
 // }
 
 byoc-sitecore-form {
-  @media (min-width: 1400px) {
-    max-width: 80rem;
-  }
   width: 100%;
   max-width: 80rem;
   margin: auto;
+  @media (min-width: 1400px) {
+    max-width: 80rem;
+  }
   @media (max-width: 1399px) {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -299,6 +299,7 @@ byoc-sitecore-form {
         &:last-child {
           margin: 2rem;
           padding: 1.25rem;
+          background-color: var(--chartwell-primary-color);
 
           &:not(.IsSurveyForm) {
             order: 1;
@@ -313,8 +314,6 @@ byoc-sitecore-form {
               max-width: 40% !important;
             }                           
           }          
-
-          background-color: var(--chartwell-primary-color);
 
           @media screen and (max-width: 1000px) {
             width: 100%;

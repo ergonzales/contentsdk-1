@@ -93,10 +93,10 @@ main {
 
 #ChartwellHeader {
   font-size: var(--chartwell-nav-font-size) !important;
+  background-color: rgba(255, 255, 255, 0.925);
   @media (max-width: 1024px) {
     background-color: white;
   }
-  background-color: rgba(255, 255, 255, 0.925);
 
   .chartwellheader {
     font-size: var(--chartwell-nav-font-size);

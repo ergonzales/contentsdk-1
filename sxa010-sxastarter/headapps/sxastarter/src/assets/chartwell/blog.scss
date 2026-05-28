@@ -108,11 +108,11 @@
                     bottom: 0;
                     top: auto;
                     padding: 2rem 3rem;
+                    background-color: var(--chartwell-primary-color-85);
 
                     @media screen and (max-width: 768px) {
                         padding: 1rem 3rem;
                     }
-                    background-color: var(--chartwell-primary-color-85);
                     h2 { font-size: 1.5rem;}                    
                 }                
             }

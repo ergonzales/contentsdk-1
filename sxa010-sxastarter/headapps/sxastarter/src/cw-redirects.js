@@ -158,7 +158,7 @@ module.exports = [
   { source: "/southwind", destination: "/on/sudbury/southwind", permanent: true },
   { source: "/(stalbert|st-albert)", destination: "/ab/st-albert/st-albert", permanent: true },
   { source: "/(stclairbeach|st-clair-beach)", destination: "/on/tecumseh/st-clair-beach", permanent: true },
-  { source: "/(stemarthe|ste-marthe)", destination: "/qc/saint-hyacinthe/ste-marthe", permanent: true },
+  { source: "/(stemarthe|ste-marthe)", destination: "/fr/qc/saint-hyacinthe/ste-marthe", permanent: true },
   { source: "/(stillwatercreek|stillwater-creek)", destination: "/on/nepean/stillwater-creek", permanent: true },
   { source: "/(terraceonthesquare|terrace-on-the-square)", destination: "/on/waterloo/terrace-on-the-square", permanent: true },
   { source: "/(thesumachbychartwell|the-sumach-by-chartwell)", destination: "/on/toronto/the-sumach-by-chartwell", permanent: true },
@@ -188,7 +188,8 @@ module.exports = [
   { source: "/vista", destination: "/bc/esquimalt/vista", permanent: true },
   { source: "/riverstone", destination: "/on/london/riverstone", permanent: true },
   { source: "/westhill", destination: "/on/waterloo/westhill", permanent: true },
-
+  { source: "/(victoriaharbour|victoria-harbour|victoriaharbourbychartwell)", destination: "/bc/victoria/victoria-harbour", permanent: true },
+  { source: "/(theedward|the-edward)", destination: "/ab/calgary/the-edward", permanent: true },
   //#endregion Redirects for residence short names
   { source: "/evenement", destination: "https://bienvivre.chartwell.com/evenement", permanent: true },
 

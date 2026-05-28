@@ -107,7 +107,7 @@ const FindAResidence = (props: any): JSX.Element => {
       selected: false,
     }));
     setSelectedFilterOptions((prev) => (areFilterOptionsEqual(prev, disabledFilterOption) ? prev : disabledFilterOption));
-  }, [ResidencesList, routerLocale, routerAsPath, sitecoreContext.route?.name]);
+  }, [router, sitecoreContext, ResidencesList]);
 
   useEffect(() => {
     handleFilterCareOptions();
